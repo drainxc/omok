@@ -8,10 +8,10 @@ const GlobalStyle = createGlobalStyle`
       background-image: url(${floor});
       display: flex;
       justify-content: center;
-      padding: 5%;
+      padding: 2%;
       -webkit-user-select: none;
       -moz-user-select: none; 
-      -ms-user-select: none; 
+      -ms-user-select: none;
       user-select: none;
   }
 `;
