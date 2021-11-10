@@ -7,6 +7,7 @@ export const GameBoard = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 12px;
   th {
     border: 1px solid black;
   }
@@ -16,12 +17,22 @@ export const GameBoard = styled.div`
     border-collapse: collapse;
     background-color: #c69153;
   }
-  button {
+  .stone {
     border: none;
-    background-color: white;
-    border-radius: 26px;
+    width: 20px;
+    height: 20px;
+    background-color: black;
+    color: white;
+    border-radius: 50%;
     position: absolute;
-    margin-left: 5px;
-    margin-top: 5px;
+    margin-left: 20px;
+    margin-top: 20px;
+    opacity: 0;
+  }
+  .stone:hover {
+    opacity: 40%;
+    span {
+        opacity: 0;
+    }
   }
 `;
