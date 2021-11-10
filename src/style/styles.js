@@ -6,7 +6,9 @@ const GlobalStyle = createGlobalStyle`
   ${reset};
   body {
       background-image: url(${floor});
-    /* background-color: black; */
+      display: flex;
+      justify-content: center;
+      padding: 5%;
   }
 `;
 
