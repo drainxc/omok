@@ -1,9 +1,8 @@
 import React, { useCallback, useMemo, useState } from "react";
 import * as S from "./styles";
 import { Compare } from "../compare";
-import { data } from "../../lib/export";
 
-export default function Board() {
+export default function Board({ data }) {
   const [board, SetBoard] = useState(data);
   const [put, setPut] = useState(false);
 
