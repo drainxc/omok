@@ -1,17 +1,19 @@
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useMemo, useState , useRef} from "react";
 import * as S from "./styles";
 // import { Compare } from "../compare";
 import { data } from "../../lib/export";
 
 export default function Board() {
   const [board, SetBoard] = useState(data);
-
   const [put, setPut] = useState(false);
+
   const change = useCallback(
-    (i, j) => {
+    (i, j, e) => {
       setPut(!put);
       SetBoard(board, (board[i][j] = 1));
-      //   Compare(board);
+      // Compare(board);
+      e.target.style = "opacity: 1;"
+      console.log(e.target);
     },
     [board, put]
   );
@@ -24,9 +26,13 @@ export default function Board() {
           <tr>
             {block.map((index, j) => (
               <th>
-                <button id={`${i} ${j}`} onClick={() => change(i, j)}>
-                  {index}
-                </button>
+                <div
+                  id={`${i} ${j}`}
+                  className="stone"
+                  onClick={(e) => change(i, j, e)}
+                >
+                  <span>{index}</span>
+                </div>
               </th>
             ))}
           </tr>
