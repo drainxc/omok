@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo, useState } from "react";
 import * as S from "./styles";
-import { Compare } from "../compare";
+// import { Compare } from "../compare";
 import { data } from "../../lib/export";
 
 export default function Board() {
@@ -11,7 +11,7 @@ export default function Board() {
     (i, j) => {
       setPut(!put);
       SetBoard(board, (board[i][j] = 1));
-      Compare(board);
+      //   Compare(board);
     },
     [board, put]
   );
@@ -20,9 +20,9 @@ export default function Board() {
     console.log(board);
     return (
       <>
-        {board.map((boardN, i) => (
+        {board.map((block, i) => (
           <tr>
-            {boardN.map((index, j) => (
+            {block.map((index, j) => (
               <th>
                 <button id={`${i} ${j}`} onClick={() => change(i, j)}>
                   {index}
