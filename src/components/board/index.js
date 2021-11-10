@@ -1,6 +1,6 @@
-import React, { useCallback, useMemo, useState , useRef} from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import * as S from "./styles";
-// import { Compare } from "../compare";
+import { Compare } from "../compare";
 import { data } from "../../lib/export";
 
 export default function Board() {
@@ -11,9 +11,8 @@ export default function Board() {
     (i, j, e) => {
       setPut(!put);
       SetBoard(board, (board[i][j] = 1));
-      // Compare(board);
-      e.target.style = "opacity: 1;"
-      console.log(e.target);
+      Compare(i, j, board);
+      e.target.style = "opacity: 1;";
     },
     [board, put]
   );
