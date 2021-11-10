@@ -37,7 +37,9 @@ export default function Board() {
 
   return (
     <>
-      <S.Table>{boardMemo}</S.Table>
+      <S.GameBoard>
+        <table>{boardMemo}</table>
+      </S.GameBoard>
     </>
   );
 }
