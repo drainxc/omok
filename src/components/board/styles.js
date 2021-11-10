@@ -7,4 +7,8 @@ export const Table = styled.table`
   th {
     border: 1px solid black
   }
+  button {
+      border: none;
+      background-color: white;
+  }
 `;
