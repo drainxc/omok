@@ -50,7 +50,7 @@ export function Ai(coordinate, setBoard) {
         tmp = y1;
         y1 = y2;
         y2 = tmp;
-      }
+      } // 랜덤으로 값 변경
       y = // y좌표
         coordinate.y +
         y1 *

@@ -20,7 +20,7 @@ export default function Board({ data }) {
       Compare(0, 1, 0, -1, coordinate);
       Compare(1, 1, -1, -1, coordinate);
       Compare(1, -1, -1, 1, coordinate);
-      setTimeout(() => {
+      setTimeout(() => { // 0.3초 후에 AI 돌 놓기
         Ai(coordinate, setBoard);
       }, (300)); // AI 돌 놓기
 
