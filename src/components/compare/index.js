@@ -1,26 +1,32 @@
-let point = 0;
-
 export function Compare(y1, x1, y2, x2, coordinate) {
-  let returnValue = 0;
-  returnValue += MainCompare(
+  let point = 0;
+  let value = 0;
+  point += MainCompare(
     y1,
     x1,
     coordinate.board,
     coordinate.y,
     coordinate.x,
-    point
+    value
   );
-  returnValue += MainCompare(
+  point += MainCompare(
     y2,
     x2,
     coordinate.board,
     coordinate.y,
     coordinate.x,
-    point
+    value
   );
-
-  point = 0;
-  return returnValue; // point 리턴
+  if (point === 4 && coordinate.board[coordinate.y][coordinate.x] === 1) {
+    // point가 4이면 승리
+    alert("흑 승리!"); // 흑이 이겼을 때
+  } else if (
+    point === 4 &&
+    coordinate.board[coordinate.y][coordinate.x] === 2
+  ) {
+    alert("백 승리!"); // 백이 이겼을 때
+  }
+  return point; // point 리턴
 }
 
 export function MainCompare(width, height, board, y, x, point) {
@@ -34,13 +40,6 @@ export function MainCompare(width, height, board, y, x, point) {
     } else {
       i = 5;
     }
-  }
-
-  if (point === 4 && board[y][x] === 1) {
-    // point가 4이면 승리
-    alert("흑 승리!"); // 흑이 이겼을 때
-  } else if (point === 4 && board[y][x] === 2) {
-    alert("백 승리!"); // 백이 이겼을 때
   }
   return point; // point 리턴
 }

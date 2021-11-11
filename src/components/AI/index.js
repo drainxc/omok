@@ -131,9 +131,6 @@ export function Ai(coordinate, setBoard) {
           return (document.getElementById(`${y} ${x}`).style =
             "opacity: 1; background-color: white;");
         } else {
-          console.log(
-            MainCompare(-1, 1, coordinate.board, coordinate.y, coordinate.x, 0)
-          );
           y =
             coordinate.y +
             (MainCompare(
