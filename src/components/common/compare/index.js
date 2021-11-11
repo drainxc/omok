@@ -26,3 +26,10 @@ export function MainCompare(width, height, board, y, x, point) {
   }
   return point; // point 리턴
 }
+
+export function EverythingCompare(board, y, x) {
+  Compare(1, 0, -1, 0, board, y, x);
+  Compare(0, 1, 0, -1, board, y, x);
+  Compare(1, 1, -1, -1, board, y, x);
+  Compare(1, -1, -1, 1, board, y, x);
+}
