@@ -1,17 +1,29 @@
 import React, { useCallback, useMemo, useState } from "react";
 import * as S from "./styles";
 import { Compare } from "../compare";
+import { Ai } from "../AI";
 
 export default function Board({ data }) {
-  const [board, SetBoard] = useState(data);
+  const [board, setBoard] = useState(data);
   const [put, setPut] = useState(false);
 
   const change = useCallback(
     (i, j, e) => {
+      console.log(e.target);
       setPut(!put);
-      SetBoard(board, (board[i][j] = 1));
-      Compare(i, j, board);
-      e.target.style = "opacity: 1;";
+      setBoard(board, (board[i][j] = 1));
+      const coordinate = {
+        board: board,
+        y: i,
+        x: j,
+      };
+      Compare(1, 0, -1, 0, coordinate);
+      Compare(0, 1, 0, -1, coordinate);
+      Compare(1, 1, -1, -1, coordinate);
+      Compare(1, -1, -1, 1, coordinate);
+      Ai(board, setBoard, i, j);
+
+      e.target.style = "opacity: 1; background-color: black;";
     },
     [board, put]
   );
