@@ -41,6 +41,16 @@ export function Ai(coordinate, setBoard) {
     }
 
     function defence(x1, y1, x2, y2) {
+      const randomNumber = getRandomIntInclusive(0, 1);
+      let tmp;
+      if (randomNumber) {
+        tmp = x1;
+        x1 = x2;
+        x2 = tmp;
+        tmp = y1;
+        y1 = y2;
+        y2 = tmp;
+      }
       y = // y좌표
         coordinate.y +
         y1 *
