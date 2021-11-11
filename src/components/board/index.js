@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo, useState } from "react";
 import * as S from "./styles";
-import { Compare } from "../compare";
+import { Compare, Victory } from "../compare";
 import { Ai } from "../AI";
 
 export default function Board({ data }) {
@@ -19,7 +19,7 @@ export default function Board({ data }) {
       Compare(1, 0, -1, 0, coordinate);
       Compare(0, 1, 0, -1, coordinate);
       Compare(1, 1, -1, -1, coordinate);
-      Compare(1, -1, -1, 1, coordinate); // 승리 조건
+      Compare(1, -1, -1, 1, coordinate);
       Ai(coordinate, setBoard); // AI 돌 놓기
 
       e.target.style = "opacity: 1; background-color: black;";
