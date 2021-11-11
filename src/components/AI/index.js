@@ -34,8 +34,23 @@ export function Ai(coordinate, setBoard) {
       // 좌표가 빈 배열이 아니라면 왼쪽 마지막 칸 좌표 지정
       y = coordinate.y;
       x =
-        coordinate.x -
-        (MainCompare(-1, 0, coordinate.board, coordinate.y, coordinate.x) - 1);
+        coordinate.x - 1;
+      setBoard(coordinate.board, (coordinate.board[y][x] = 2));
+      return (document.getElementById(`${y} ${x}`).style =
+        "opacity: 1; background-color: white;");
+    }
+  } else if (Compare(0, 1, 0, -1, coordinate) >= 1) {
+    y =
+      coordinate.y +
+      (MainCompare(0, 1, coordinate.board, coordinate.y, coordinate.x) + 1);
+    x = coordinate.x;
+    if (coordinate.board[y][x] === 0) {
+      setBoard(coordinate.board, (coordinate.board[y][x] = 2));
+      return (document.getElementById(`${y} ${x}`).style =
+        "opacity: 1; background-color: white;");
+    } else {
+      y = coordinate.y - 1;
+      x = coordinate.x;
       setBoard(coordinate.board, (coordinate.board[y][x] = 2));
       return (document.getElementById(`${y} ${x}`).style =
         "opacity: 1; background-color: white;");

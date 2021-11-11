@@ -46,4 +46,7 @@ export function Victory(coordinate) {
     alert("백 승리!"); // 백이 이겼을 때
     return;
   }
+  else {
+    point = 0;
+  }
 }
