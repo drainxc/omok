@@ -20,7 +20,9 @@ export default function Board({ data }) {
       Compare(0, 1, 0, -1, coordinate);
       Compare(1, 1, -1, -1, coordinate);
       Compare(1, -1, -1, 1, coordinate);
-      Ai(coordinate, setBoard); // AI 돌 놓기
+      setTimeout(() => {
+        Ai(coordinate, setBoard);
+      }, (300)); // AI 돌 놓기
 
       e.target.style = "opacity: 1; background-color: black;";
     },
