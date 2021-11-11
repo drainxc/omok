@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Board from "../board";
 import * as S from "./styles";
 import { data } from "../../lib/export/index";
