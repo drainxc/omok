@@ -21,7 +21,7 @@ export default function Board({ data }) {
       Compare(0, 1, 0, -1, coordinate);
       Compare(1, 1, -1, -1, coordinate);
       Compare(1, -1, -1, 1, coordinate);
-      Ai(board, setBoard, i, j);
+      Ai(coordinate, setBoard);
 
       e.target.style = "opacity: 1; background-color: black;";
     },
