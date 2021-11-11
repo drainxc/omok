@@ -8,7 +8,7 @@ export function Compare(y1, x1, y2, x2, coordinate) {
     coordinate.y,
     coordinate.x,
     value
-  );
+  ); // 마지막으로 둔 돌을 기준으로 왼쪽부터 비교
   point += MainCompare(
     y2,
     x2,
@@ -16,7 +16,7 @@ export function Compare(y1, x1, y2, x2, coordinate) {
     coordinate.y,
     coordinate.x,
     value
-  );
+  ); // 이후 오른쪽 비교
   if (point === 4 && coordinate.board[coordinate.y][coordinate.x] === 1) {
     // point가 4이면 승리
     alert("흑 승리!"); // 흑이 이겼을 때
