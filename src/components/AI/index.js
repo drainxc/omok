@@ -1,7 +1,8 @@
 import { Compare, MainCompare } from "../compare";
 
 export function Ai(coordinate, setBoard) {
-  let y, x; // 좌표 선언
+  let y, x; // 좌표 선언;
+  const drawStyle = "opacity: 1; background-color: white;";
   if (
     Compare(1, 0, -1, 0, coordinate) === 0 &&
     Compare(0, 1, 0, -1, coordinate) === 0 &&
@@ -14,31 +15,26 @@ export function Ai(coordinate, setBoard) {
       x = coordinate.x + getRandomIntInclusive(-1, 1); // 랜덤
       if (coordinate.board[y][x] === 0) {
         setBoard(coordinate.board, (coordinate.board[y][x] = 2)); // 배열 넣기
-        return (document.getElementById(`${y} ${x}`).style =
-          "opacity: 1; background-color: white;"); // 돌 그리기
+        return (document.getElementById(`${y} ${x}`).style = drawStyle); // 돌 그리기
       }
     }
   } else {
     for (let i = 3; i > 0; i--) {
       if (Compare(1, 0, -1, 0, coordinate) >= i) {
-        // 흑돌이 가로로 공격했을 때
         defence(1, 0, -1, 0);
-        return (document.getElementById(`${y} ${x}`).style =
-          "opacity: 1; background-color: white;");
+        return (document.getElementById(`${y} ${x}`).style = drawStyle);
       } else if (Compare(0, 1, 0, -1, coordinate) >= i) {
         defence(0, 1, 0, -1);
-        return (document.getElementById(`${y} ${x}`).style =
-          "opacity: 1; background-color: white;");
+        return (document.getElementById(`${y} ${x}`).style = drawStyle);
       } else if (Compare(1, 1, -1, -1, coordinate) >= i) {
         defence(1, 1, -1, -1);
-        return (document.getElementById(`${y} ${x}`).style =
-          "opacity: 1; background-color: white;");
+        return (document.getElementById(`${y} ${x}`).style = drawStyle);
       } else if (Compare(1, -1, -1, 1, coordinate) >= i) {
         defence(1, -1, -1, 1);
-        return (document.getElementById(`${y} ${x}`).style =
-          "opacity: 1; background-color: white;");
+        return (document.getElementById(`${y} ${x}`).style = drawStyle);
       }
     }
+    
     function defence(x1, y1, x2, y2) {
       y =
         coordinate.y +
@@ -67,7 +63,7 @@ export function Ai(coordinate, setBoard) {
       if (coordinate.board[y][x] === 0) {
         // 좌표가 빈 배열일 때
         setBoard(coordinate.board, (coordinate.board[y][x] = 2));
-        return (y, x);
+        return y, x;
       } else {
         // 좌표가 빈 배열이 아니라면 왼쪽 마지막 칸 좌표 지정
         y =
@@ -95,7 +91,7 @@ export function Ai(coordinate, setBoard) {
             ) +
               1);
         setBoard(coordinate.board, (coordinate.board[y][x] = 2));
-        return (y, x)
+        return y, x;
       }
     }
   }
