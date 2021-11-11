@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo, useState } from "react";
 import * as S from "./styles";
-import { Compare, Victory } from "../compare";
+import { Compare } from "../compare";
 import { Ai } from "../AI";
 
 export default function Board({ data }) {

@@ -18,43 +18,149 @@ export function Ai(coordinate, setBoard) {
           "opacity: 1; background-color: white;"); // 돌 그리기
       }
     }
-  } else if (Compare(1, 0, -1, 0, coordinate) >= 1) {
-    // 흑돌이 가로로 공격했을 때
-    y = coordinate.y;
-    x =
-      coordinate.x +
-      MainCompare(1, 0, coordinate.board, coordinate.y, coordinate.x, 0) +
-      1; // 흑돌이 가로로 공격했을 때 오른쪽 마지막 칸 좌표 지정
-    if (coordinate.board[y][x] === 0) {
-      // 좌표가 빈 배열일 때
-      setBoard(coordinate.board, (coordinate.board[y][x] = 2));
-      return (document.getElementById(`${y} ${x}`).style =
-        "opacity: 1; background-color: white;");
-    } else {
-      // 좌표가 빈 배열이 아니라면 왼쪽 마지막 칸 좌표 지정
-      console.log(MainCompare(1, 0, coordinate.board, coordinate.y, coordinate.x, 0))
-      console.log(MainCompare(-1, 0, coordinate.board, coordinate.y, coordinate.x, 0))
-      y = coordinate.y;
-      x = coordinate.x - (MainCompare(-1, 0, coordinate.board, coordinate.y, coordinate.x, 0) + 1);
-      setBoard(coordinate.board, (coordinate.board[y][x] = 2));
-      return (document.getElementById(`${y} ${x}`).style =
-        "opacity: 1; background-color: white;");
-    }
-  } else if (Compare(0, 1, 0, -1, coordinate) >= 1) {
-    y =
-      coordinate.y +
-      (MainCompare(0, 1, coordinate.board, coordinate.y, coordinate.x, 0) + 1);
-    x = coordinate.x;
-    if (coordinate.board[y][x] === 0) {
-      setBoard(coordinate.board, (coordinate.board[y][x] = 2));
-      return (document.getElementById(`${y} ${x}`).style =
-        "opacity: 1; background-color: white;");
-    } else {
-      y = coordinate.y - (MainCompare(0, -1, coordinate.board, coordinate.y, coordinate.x, 0) + 1);
-      x = coordinate.x;
-      setBoard(coordinate.board, (coordinate.board[y][x] = 2));
-      return (document.getElementById(`${y} ${x}`).style =
-        "opacity: 1; background-color: white;");
+  } else {
+    for (let i = 3; i > 0; i--) {
+      if (Compare(1, 0, -1, 0, coordinate) >= i) {
+        // 흑돌이 가로로 공격했을 때
+        y = coordinate.y;
+        x =
+          coordinate.x +
+          MainCompare(1, 0, coordinate.board, coordinate.y, coordinate.x, 0) +
+          1; // 흑돌이 가로로 공격했을 때 오른쪽 마지막 칸 좌표 지정
+        if (coordinate.board[y][x] === 0) {
+          // 좌표가 빈 배열일 때
+          setBoard(coordinate.board, (coordinate.board[y][x] = 2));
+          return (document.getElementById(`${y} ${x}`).style =
+            "opacity: 1; background-color: white;");
+        } else {
+          // 좌표가 빈 배열이 아니라면 왼쪽 마지막 칸 좌표 지정
+          y = coordinate.y;
+          x =
+            coordinate.x -
+            (MainCompare(
+              -1,
+              0,
+              coordinate.board,
+              coordinate.y,
+              coordinate.x,
+              0
+            ) +
+              1);
+          setBoard(coordinate.board, (coordinate.board[y][x] = 2));
+          return (document.getElementById(`${y} ${x}`).style =
+            "opacity: 1; background-color: white;");
+        }
+      } else if (Compare(0, 1, 0, -1, coordinate) >= i) {
+        y =
+          coordinate.y +
+          (MainCompare(0, 1, coordinate.board, coordinate.y, coordinate.x, 0) +
+            1);
+        x = coordinate.x;
+        if (coordinate.board[y][x] === 0) {
+          setBoard(coordinate.board, (coordinate.board[y][x] = 2));
+          return (document.getElementById(`${y} ${x}`).style =
+            "opacity: 1; background-color: white;");
+        } else {
+          y =
+            coordinate.y -
+            (MainCompare(
+              0,
+              -1,
+              coordinate.board,
+              coordinate.y,
+              coordinate.x,
+              0
+            ) +
+              1);
+          x = coordinate.x;
+          setBoard(coordinate.board, (coordinate.board[y][x] = 2));
+          return (document.getElementById(`${y} ${x}`).style =
+            "opacity: 1; background-color: white;");
+        }
+      } else if (Compare(1, 1, -1, -1, coordinate) >= i) {
+        y =
+          coordinate.y +
+          (MainCompare(1, 1, coordinate.board, coordinate.y, coordinate.x, 0) +
+            1);
+        x =
+          coordinate.x +
+          (MainCompare(1, 1, coordinate.board, coordinate.y, coordinate.x, 0) +
+            1);
+        if (coordinate.board[y][x] === 0) {
+          setBoard(coordinate.board, (coordinate.board[y][x] = 2));
+          return (document.getElementById(`${y} ${x}`).style =
+            "opacity: 1; background-color: white;");
+        } else {
+          y =
+            coordinate.y -
+            (MainCompare(
+              -1,
+              -1,
+              coordinate.board,
+              coordinate.y,
+              coordinate.x,
+              0
+            ) +
+              1);
+          x =
+            coordinate.x -
+            (MainCompare(
+              -1,
+              -1,
+              coordinate.board,
+              coordinate.y,
+              coordinate.x,
+              0
+            ) +
+              1);
+          setBoard(coordinate.board, (coordinate.board[y][x] = 2));
+          return (document.getElementById(`${y} ${x}`).style =
+            "opacity: 1; background-color: white;");
+        }
+      } else if (Compare(1, -1, -1, 1, coordinate) >= i) {
+        y =
+          coordinate.y -
+          (MainCompare(1, -1, coordinate.board, coordinate.y, coordinate.x, 0) +
+            1);
+        x =
+          coordinate.x +
+          (MainCompare(1, -1, coordinate.board, coordinate.y, coordinate.x, 0) +
+            1);
+        if (coordinate.board[y][x] === 0) {
+          setBoard(coordinate.board, (coordinate.board[y][x] = 2));
+          return (document.getElementById(`${y} ${x}`).style =
+            "opacity: 1; background-color: white;");
+        } else {
+          console.log(
+            MainCompare(-1, 1, coordinate.board, coordinate.y, coordinate.x, 0)
+          );
+          y =
+            coordinate.y +
+            (MainCompare(
+              -1,
+              1,
+              coordinate.board,
+              coordinate.y,
+              coordinate.x,
+              0
+            ) +
+              1);
+          x =
+            coordinate.x -
+            (MainCompare(
+              -1,
+              1,
+              coordinate.board,
+              coordinate.y,
+              coordinate.x,
+              0
+            ) +
+              1);
+          setBoard(coordinate.board, (coordinate.board[y][x] = 2));
+          return (document.getElementById(`${y} ${x}`).style =
+            "opacity: 1; background-color: white;");
+        }
+      }
     }
   }
 }
