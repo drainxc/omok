@@ -1,4 +1,4 @@
-import MainPage from "./components/mainPage";
+import MainPage from "./components/pages/mainPage";
 import GlobalStyle from "./style/styles";
 
 function App() {

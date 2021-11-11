@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo, useState } from "react";
 import * as S from "./styles";
-import { Compare } from "../compare";
-import { Ai } from "../AI";
+import { Compare } from "../../common/compare";
+import { Ai } from "../../common/AI";
 
 export default function Board({ data }) {
   const [board, setBoard] = useState(data);
