@@ -5,7 +5,7 @@ export function Compare(y1, x1, y2, x2, coordinate) {
   returnValue += MainCompare(y1, x1, coordinate.board, coordinate.y, coordinate.x);
   returnValue += MainCompare(y2, x2, coordinate.board, coordinate.y, coordinate.x);
   point = 0;
-  return returnValue;
+  return returnValue; // point 리턴
 }
 
 export function MainCompare(width, height, board, y, x) {
@@ -13,18 +13,18 @@ export function MainCompare(width, height, board, y, x) {
     if (
       board[y][x] === board[y + height * i][x + width * i] &&
       board[y][x] !== 0
-    ) {
-      point += 1;
+    ) { // 돌이 이어져 있는 지 비교
+      point += 1; // 이어져 있다면 point 1 증가
     } else {
       i = 5;
     }
-    if (point === 4 && board[y][x] === 1) {
-      alert("흑 승리!");
+    if (point === 4 && board[y][x] === 1) { // point가 4이면 승리
+      alert("흑 승리!"); // 흑이 이겼을 때
       return;
     } else if (point === 4 && board[y][x] === 2) {
-      alert("백 승리!");
+      alert("백 승리!"); // 백이 이겼을 때
       return;
     }
   }
-  return point;
+  return point; // point 리턴
 }

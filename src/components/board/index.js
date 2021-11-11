@@ -9,9 +9,8 @@ export default function Board({ data }) {
 
   const change = useCallback(
     (i, j, e) => {
-      console.log(e.target);
-      setPut(!put);
-      setBoard(board, (board[i][j] = 1));
+      setPut(!put); // 자신이 둘 수 있을 때
+      setBoard(board, (board[i][j] = 1)); // 배열 넣기
       const coordinate = {
         board: board,
         y: i,
@@ -20,8 +19,8 @@ export default function Board({ data }) {
       Compare(1, 0, -1, 0, coordinate);
       Compare(0, 1, 0, -1, coordinate);
       Compare(1, 1, -1, -1, coordinate);
-      Compare(1, -1, -1, 1, coordinate);
-      Ai(coordinate, setBoard);
+      Compare(1, -1, -1, 1, coordinate); // 승리 조건
+      Ai(coordinate, setBoard); // AI 돌 놓기
 
       e.target.style = "opacity: 1; background-color: black;";
     },
