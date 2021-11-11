@@ -4,10 +4,10 @@ export function Ai(coordinate, setBoard) {
   let y, x; // 좌표 선언
   const drawStyle = "opacity: 1; background-color: white;"; // 색 및 투명도
   if (
-    Compare(1, 0, -1, 0, coordinate) === 0 &&
-    Compare(0, 1, 0, -1, coordinate) === 0 &&
-    Compare(1, 1, -1, -1, coordinate) === 0 &&
-    Compare(1, -1, -1, 1, coordinate) === 0
+    Compare(1, 0, -1, 0, coordinate.board, coordinate.y, coordinate.x) === 0 &&
+    Compare(0, 1, 0, -1, coordinate.board, coordinate.y, coordinate.x) === 0 &&
+    Compare(1, 1, -1, -1, coordinate.board, coordinate.y, coordinate.x) === 0 &&
+    Compare(1, -1, -1, 1, coordinate.board, coordinate.y, coordinate.x) === 0
   ) {
     // 흑돌 주변에 아무 것도 없을 때
     while (1) {
@@ -16,24 +16,36 @@ export function Ai(coordinate, setBoard) {
       if (coordinate.board[y][x] === 0) {
         // 빈 배열일 때
         setBoard(coordinate.board, (coordinate.board[y][x] = 2)); // 배열 넣기
+        Compare(1, 0, -1, 0, coordinate.board, y, x);
+        Compare(0, 1, 0, -1, coordinate.board, y, x);
+        Compare(1, 1, -1, -1, coordinate.board, y, x);
+        Compare(1, -1, -1, 1, coordinate.board, y, x);
         return (document.getElementById(`${y} ${x}`).style = drawStyle); // 돌 그리기
       }
     }
   } else {
     for (let i = 3; i > 0; i--) {
-      if (Compare(1, 0, -1, 0, coordinate) >= i) {
+      if (
+        Compare(1, 0, -1, 0, coordinate.board, coordinate.y, coordinate.x) >= i
+      ) {
         // 가로로 공격을 받았을 때
         defence(1, 0, -1, 0);
         return (document.getElementById(`${y} ${x}`).style = drawStyle);
-      } else if (Compare(0, 1, 0, -1, coordinate) >= i) {
+      } else if (
+        Compare(0, 1, 0, -1, coordinate.board, coordinate.y, coordinate.x) >= i
+      ) {
         // 세로로 공격을 받았을 때
         defence(0, 1, 0, -1);
         return (document.getElementById(`${y} ${x}`).style = drawStyle);
-      } else if (Compare(1, 1, -1, -1, coordinate) >= i) {
+      } else if (
+        Compare(1, 1, -1, -1, coordinate.board, coordinate.y, coordinate.x) >= i
+      ) {
         // 대각선으로 공격을 받았을 때
         defence(1, 1, -1, -1);
         return (document.getElementById(`${y} ${x}`).style = drawStyle);
-      } else if (Compare(1, -1, -1, 1, coordinate) >= i) {
+      } else if (
+        Compare(1, -1, -1, 1, coordinate.board, coordinate.y, coordinate.x) >= i
+      ) {
         // 대각선(반대)으로 공격을 받았을 떄
         defence(1, -1, -1, 1);
         return (document.getElementById(`${y} ${x}`).style = drawStyle);
@@ -76,8 +88,12 @@ export function Ai(coordinate, setBoard) {
           ) +
             1); // 공격을 받았을 때 수비
       if (coordinate.board[y][x] === 0) {
-        // 좌표가 빈 배열이라면 수비하고 리턴
+        // 좌표가 빈 배열이라면 수비하고 리턴\
         setBoard(coordinate.board, (coordinate.board[y][x] = 2));
+        Compare(1, 0, -1, 0, coordinate.board, y, x);
+        Compare(0, 1, 0, -1, coordinate.board, y, x);
+        Compare(1, 1, -1, -1, coordinate.board, y, x);
+        Compare(1, -1, -1, 1, coordinate.board, y, x);
         // eslint-disable-next-line no-sequences
         return y, x;
       } else {
@@ -107,6 +123,10 @@ export function Ai(coordinate, setBoard) {
             ) +
               1);
         setBoard(coordinate.board, (coordinate.board[y][x] = 2));
+        Compare(1, 0, -1, 0, coordinate.board, y, x);
+        Compare(0, 1, 0, -1, coordinate.board, y, x);
+        Compare(1, 1, -1, -1, coordinate.board, y, x);
+        Compare(1, -1, -1, 1, coordinate.board, y, x);
         // eslint-disable-next-line no-sequences
         return y, x;
       }
