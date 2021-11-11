@@ -23,7 +23,7 @@ export function Ai(coordinate, setBoard) {
     y = coordinate.y;
     x =
       coordinate.x +
-      MainCompare(1, 0, coordinate.board, coordinate.y, coordinate.x) +
+      MainCompare(1, 0, coordinate.board, coordinate.y, coordinate.x, 0) +
       1; // 흑돌이 가로로 공격했을 때 오른쪽 마지막 칸 좌표 지정
     if (coordinate.board[y][x] === 0) {
       // 좌표가 빈 배열일 때
@@ -32,9 +32,10 @@ export function Ai(coordinate, setBoard) {
         "opacity: 1; background-color: white;");
     } else {
       // 좌표가 빈 배열이 아니라면 왼쪽 마지막 칸 좌표 지정
+      console.log(MainCompare(1, 0, coordinate.board, coordinate.y, coordinate.x, 0))
+      console.log(MainCompare(-1, 0, coordinate.board, coordinate.y, coordinate.x, 0))
       y = coordinate.y;
-      x =
-        coordinate.x - 1;
+      x = coordinate.x - (MainCompare(-1, 0, coordinate.board, coordinate.y, coordinate.x, 0) + 1);
       setBoard(coordinate.board, (coordinate.board[y][x] = 2));
       return (document.getElementById(`${y} ${x}`).style =
         "opacity: 1; background-color: white;");
@@ -42,14 +43,14 @@ export function Ai(coordinate, setBoard) {
   } else if (Compare(0, 1, 0, -1, coordinate) >= 1) {
     y =
       coordinate.y +
-      (MainCompare(0, 1, coordinate.board, coordinate.y, coordinate.x) + 1);
+      (MainCompare(0, 1, coordinate.board, coordinate.y, coordinate.x, 0) + 1);
     x = coordinate.x;
     if (coordinate.board[y][x] === 0) {
       setBoard(coordinate.board, (coordinate.board[y][x] = 2));
       return (document.getElementById(`${y} ${x}`).style =
         "opacity: 1; background-color: white;");
     } else {
-      y = coordinate.y - 1;
+      y = coordinate.y - (MainCompare(0, -1, coordinate.board, coordinate.y, coordinate.x, 0) + 1);
       x = coordinate.x;
       setBoard(coordinate.board, (coordinate.board[y][x] = 2));
       return (document.getElementById(`${y} ${x}`).style =
