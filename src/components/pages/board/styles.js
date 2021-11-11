@@ -33,11 +33,9 @@ export const GameBoard = styled.div`
   span {
     pointer-events: none;
     font-size: 20px;
+    opacity: 0;
   }
   .stone:hover {
     opacity: 40%;
-    span {
-      opacity: 0;
-    }
   }
 `;
