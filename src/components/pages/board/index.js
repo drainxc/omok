@@ -17,10 +17,10 @@ export default function Board({ data }) {
         x: j,
       };
       EverythingCompare(board, i, j);
-      setTimeout(() => { // 0.3초 후에 AI 돌 놓기
+      setTimeout(() => {
+        // 0.3초 후에 AI 돌 놓기
         Ai(coordinate, setBoard);
-      }, (300)); // AI 돌 놓기
-
+      }, 300); // AI 돌 놓기
       e.target.style = "opacity: 1; background-color: black;";
     },
     [board, put]

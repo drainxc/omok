@@ -105,7 +105,6 @@ export function Ai(coordinate, setBoard) {
         return y, x;
       }
     }
-    
   }
 }
 
