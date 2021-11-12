@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo, useState } from "react";
 import * as S from "./styles";
-import { Compare } from "../../common/compare";
+import { EverythingCompare } from "../../common/compare";
 import { Ai } from "../../common/AI";
 
 export default function Board({ data }) {
@@ -16,10 +16,7 @@ export default function Board({ data }) {
         y: i,
         x: j,
       };
-      Compare(1, 0, -1, 0, coordinate);
-      Compare(0, 1, 0, -1, coordinate);
-      Compare(1, 1, -1, -1, coordinate);
-      Compare(1, -1, -1, 1, coordinate);
+      EverythingCompare(board, i, j);
       setTimeout(() => { // 0.3초 후에 AI 돌 놓기
         Ai(coordinate, setBoard);
       }, (300)); // AI 돌 놓기

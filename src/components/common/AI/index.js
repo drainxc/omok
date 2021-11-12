@@ -1,4 +1,4 @@
-import { Compare, MainCompare } from "../compare";
+import { Compare, EverythingCompare, MainCompare } from "../compare";
 
 export function Ai(coordinate, setBoard) {
   let y, x; // 좌표 선언
@@ -16,10 +16,7 @@ export function Ai(coordinate, setBoard) {
       if (coordinate.board[y][x] === 0) {
         // 빈 배열일 때
         setBoard(coordinate.board, (coordinate.board[y][x] = 2)); // 배열 넣기
-        Compare(1, 0, -1, 0, coordinate.board, y, x);
-        Compare(0, 1, 0, -1, coordinate.board, y, x);
-        Compare(1, 1, -1, -1, coordinate.board, y, x);
-        Compare(1, -1, -1, 1, coordinate.board, y, x);
+        EverythingCompare(coordinate.board, y, x);
         return (document.getElementById(`${y} ${x}`).style = drawStyle); // 돌 그리기
       }
     }
@@ -90,10 +87,7 @@ export function Ai(coordinate, setBoard) {
       if (coordinate.board[y][x] === 0) {
         // 좌표가 빈 배열이라면 수비하고 리턴\
         setBoard(coordinate.board, (coordinate.board[y][x] = 2));
-        Compare(1, 0, -1, 0, coordinate.board, y, x);
-        Compare(0, 1, 0, -1, coordinate.board, y, x);
-        Compare(1, 1, -1, -1, coordinate.board, y, x);
-        Compare(1, -1, -1, 1, coordinate.board, y, x);
+        EverythingCompare(coordinate.board, y, x);
         // eslint-disable-next-line no-sequences
         return y, x;
       } else {
@@ -123,10 +117,7 @@ export function Ai(coordinate, setBoard) {
             ) +
               1);
         setBoard(coordinate.board, (coordinate.board[y][x] = 2));
-        Compare(1, 0, -1, 0, coordinate.board, y, x);
-        Compare(0, 1, 0, -1, coordinate.board, y, x);
-        Compare(1, 1, -1, -1, coordinate.board, y, x);
-        Compare(1, -1, -1, 1, coordinate.board, y, x);
+        EverythingCompare(coordinate.board, y, x);
         // eslint-disable-next-line no-sequences
         return y, x;
       }
