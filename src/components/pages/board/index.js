@@ -10,18 +10,23 @@ export default function Board({ data }) {
   const change = useCallback(
     (i, j, e) => {
       setPut(!put); // 자신이 둘 수 있을 때
-      setBoard(board, (board[i][j] = 1)); // 배열 넣기
-      const coordinate = {
-        board: board,
-        y: i,
-        x: j,
-      };
-      EverythingCompare(board, i, j);
-      setTimeout(() => {
-        // 0.3초 후에 AI 돌 놓기
-        Ai(coordinate, setBoard);
-      }, 300); // AI 돌 놓기
-      e.target.style = "opacity: 1;";
+      if (board[i][j] === 0) {
+        setBoard(board, (board[i][j] = 1)); // 배열 넣기
+        const coordinate = {
+          board: board,
+          y: i,
+          x: j,
+        };
+        EverythingCompare(board, i, j);
+        setTimeout(() => {
+          // 0.3초 후에 AI 돌 놓기
+          Ai(coordinate, setBoard);
+        }, 300); // AI 돌 놓기
+        e.target.style = "opacity: 1;";
+      }
+      else {
+        alert('중복된 자리에는 놓을 수 없습니다!');
+      }
     },
     [board, put]
   );
