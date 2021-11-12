@@ -83,30 +83,8 @@ export function Ai(coordinate, setBoard) {
         y1 = y2;
         y2 = tmp;
       } // 랜덤으로 값 변경
-      y = // y좌표
-        Y +
-        y1 *
-          (MainCompare(
-            x1,
-            y1,
-            coordinate.board,
-            Y,
-            X,
-            0
-          ) +
-            1);
-      x = // x좌표
-        X +
-        x1 *
-          (MainCompare(
-            x1,
-            y1,
-            coordinate.board,
-            Y,
-            X,
-            0
-          ) +
-            1); // 공격을 받았을 때 수비
+      y = Y + y1 * (MainCompare(x1, y1, coordinate.board, Y, X, 0) + 1); // y좌표
+      x = X + x1 * (MainCompare(x1, y1, coordinate.board, Y, X, 0) + 1); // x좌표 // 공격을 받았을 때 수비
       if (coordinate.board[y][x] === 0) {
         // 좌표가 빈 배열이라면 수비하고 리턴
         setBoard(coordinate.board, (coordinate.board[y][x] = 2));
@@ -117,30 +95,8 @@ export function Ai(coordinate, setBoard) {
         return y, x;
       } else {
         // 좌표가 빈 배열이 아니라면 반대쪽을 수비하고 리턴
-        y = // x좌표 반대쪽
-          Y +
-          y2 *
-            (MainCompare(
-              x2,
-              y2,
-              coordinate.board,
-              Y,
-              X,
-              0
-            ) +
-              1);
-        x = // y좌표 반대쪽
-          X +
-          x2 *
-            (MainCompare(
-              x2,
-              y2,
-              coordinate.board,
-              Y,
-              X,
-              0
-            ) +
-              1);
+        y = Y + y2 * (MainCompare(x2, y2, coordinate.board, Y, X, 0) + 1); // x좌표 반대쪽
+        x = X + x2 * (MainCompare(x2, y2, coordinate.board, Y, X, 0) + 1); // y좌표 반대쪽
         setBoard(coordinate.board, (coordinate.board[y][x] = 2));
         EverythingCompare(coordinate.board, y, x);
         beforeX = x;
@@ -149,6 +105,7 @@ export function Ai(coordinate, setBoard) {
         return y, x;
       }
     }
+    
   }
 }
 
