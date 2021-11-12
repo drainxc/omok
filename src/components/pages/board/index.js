@@ -10,7 +10,7 @@ export default function Board({ data }) {
   const change = useCallback(
     (i, j, e) => {
       setPut(!put); // 자신이 둘 수 있을 때
-      if (board[i][j] === 0) {
+      if (board[i][j] === 0 && i !== 0 && i !== 14 && j !== 14) {
         setBoard(board, (board[i][j] = 1)); // 배열 넣기
         const coordinate = {
           board: board,
@@ -23,9 +23,12 @@ export default function Board({ data }) {
           Ai(coordinate, setBoard);
         }, 300); // AI 돌 놓기
         e.target.style = "opacity: 1;";
-      }
-      else {
-        alert('중복된 자리에는 놓을 수 없습니다!');
+      } else {
+        if (i === 0 || i === 14 || j === 14) {
+          alert("놓을 수 없는 구역입니다!");
+        } else {
+          alert("중복된 자리에는 놓을 수 없습니다!");
+        }
       }
     },
     [board, put]
