@@ -26,6 +26,7 @@ export const GameBoard = styled.div`
     height: 30px;
     border-radius: 50%;
     position: absolute;
+    background-color: black;
     margin-left: 24px;
     margin-top: 24px;
     opacity: 0;
