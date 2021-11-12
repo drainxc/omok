@@ -21,11 +21,7 @@ export default function Board({ data }) {
         // 0.3초 후에 AI 돌 놓기
         Ai(coordinate, setBoard);
       }, 300); // AI 돌 놓기
-<<<<<<< HEAD
       e.target.style = "opacity: 1;";
-=======
-      e.target.style = "opacity: 1; background-color: black;";
->>>>>>> master
     },
     [board, put]
   );
