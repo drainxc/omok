@@ -17,32 +17,32 @@ export function Ai(coordinate, setBoard) {
       x = coordinate.x + getRandomIntInclusive(-1, 1); // 랜덤
       if (coordinate.board[y][x] === 0) {
         // 빈 배열일 때
-        setBoard(coordinate.board, (coordinate.board[y][x] = 2)); // 배열 넣기
-        EverythingCompare(coordinate.board, y, x);
-        beforeX = x;
-        beforeY = y;
+        setting();
         return (document.getElementById(`${y} ${x}`).style = drawStyle); // 돌 그리기
       }
     }
   } else {
     for (let i = 3; i > 0; i--) {
-      console.log(Compare(1, 0, -1, 0, coordinate.board, beforeY, beforeX));
       if (Compare(1, 0, -1, 0, coordinate.board, beforeY, beforeX) >= i) {
+        // 가로로 공격할 때
         Put(1, 0, -1, 0, beforeY, beforeX);
         return (document.getElementById(`${y} ${x}`).style = drawStyle);
       } else if (
         Compare(0, 1, 0, -1, coordinate.board, beforeY, beforeX) >= i
       ) {
+        // 세로로 공격할 때
         Put(0, 1, 0, -1, beforeY, beforeX);
         return (document.getElementById(`${y} ${x}`).style = drawStyle);
       } else if (
         Compare(1, 1, -1, -1, coordinate.board, beforeY, beforeX) >= i
       ) {
+        // 대각선으로 공격할 때
         Put(1, 1, -1, -1, beforeY, beforeX);
         return (document.getElementById(`${y} ${x}`).style = drawStyle);
       } else if (
         Compare(1, -1, -1, 1, coordinate.board, beforeY, beforeX) >= i
       ) {
+        // 대각선(반대)으로 공격할 때
         Put(1, -1, -1, 1, beforeY, beforeX);
         return (document.getElementById(`${y} ${x}`).style = drawStyle);
       } else if (
@@ -87,24 +87,24 @@ export function Ai(coordinate, setBoard) {
       x = X + x1 * (MainCompare(x1, y1, coordinate.board, Y, X, 0) + 1); // x좌표 // 공격을 받았을 때 수비
       if (coordinate.board[y][x] === 0) {
         // 좌표가 빈 배열이라면 수비하고 리턴
-        setBoard(coordinate.board, (coordinate.board[y][x] = 2));
-        EverythingCompare(coordinate.board, y, x);
-        beforeX = x;
-        beforeY = y;
+        setting();
         // eslint-disable-next-line no-sequences
         return y, x;
       } else {
         // 좌표가 빈 배열이 아니라면 반대쪽을 수비하고 리턴
         y = Y + y2 * (MainCompare(x2, y2, coordinate.board, Y, X, 0) + 1); // x좌표 반대쪽
         x = X + x2 * (MainCompare(x2, y2, coordinate.board, Y, X, 0) + 1); // y좌표 반대쪽
-        setBoard(coordinate.board, (coordinate.board[y][x] = 2));
-        EverythingCompare(coordinate.board, y, x);
-        beforeX = x;
-        beforeY = y;
+        setting();
         // eslint-disable-next-line no-sequences
         return y, x;
       }
     }
+  }
+  function setting() {
+    setBoard(coordinate.board, (coordinate.board[y][x] = 2));
+    EverythingCompare(coordinate.board, y, x);
+    beforeX = x;
+    beforeY = y;
   }
 }
 
