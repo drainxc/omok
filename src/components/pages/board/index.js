@@ -35,7 +35,7 @@ export default function Board({ data }) {
     [board, put]
   );
 
-  const boardMemo = useMemo(() => {
+  const GameBoard = useMemo(() => {
     console.log(board);
     return (
       <>
@@ -62,7 +62,7 @@ export default function Board({ data }) {
     <>
       <S.GameBoard>
         <RestartButton setBoard={setBoard}/>
-        <table>{boardMemo}</table>
+        <table>{GameBoard}</table>
       </S.GameBoard>
     </>
   );
