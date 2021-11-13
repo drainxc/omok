@@ -2,6 +2,7 @@ import React, { useCallback, useMemo, useState } from "react";
 import * as S from "./styles";
 import { EverythingCompare } from "../../common/compare";
 import { Ai } from "../../common/AI";
+import RestartButton from "../../common/restart";
 
 export default function Board({ data }) {
   const [board, setBoard] = useState(data);
@@ -57,35 +58,10 @@ export default function Board({ data }) {
     );
   }, [board, change]);
 
-  function restart() {
-    setBoard([
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    ]);
-    for (let i = 0; i < 15; i++) {
-      for (let j = 0; j < 15; j++) {
-        document.getElementById(`${i} ${j}`).style = "opacity: 0;";
-      }
-    }
-  }
-
   return (
     <>
       <S.GameBoard>
-        <button onClick={restart}>다시하기</button>
+        <RestartButton setBoard={setBoard}/>
         <table>{boardMemo}</table>
       </S.GameBoard>
     </>
