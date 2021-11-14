@@ -60,8 +60,10 @@ export default function Board({ data }) {
 
   return (
     <>
+      <S.Button>
+        <RestartButton setBoard={setBoard} />
+      </S.Button>
       <S.GameBoard>
-        <RestartButton setBoard={setBoard}/>
         <table>{GameBoard}</table>
       </S.GameBoard>
     </>

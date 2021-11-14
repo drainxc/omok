@@ -40,3 +40,7 @@ export const GameBoard = styled.div`
     opacity: 40%;
   }
 `;
+
+export const Button = styled.div`
+  
+`
