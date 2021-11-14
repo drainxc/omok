@@ -105,6 +105,7 @@ export function Ai(coordinate, setBoard) {
   function setting() {
     setBoard(coordinate.board, (coordinate.board[y][x] = 2));
     EverythingCompare(coordinate.board, y, x, setBoard);
+    EverythingCompare(coordinate.board, coordinate.y, coordinate.x, setBoard);
     beforeX = x;
     beforeY = y;
   }
