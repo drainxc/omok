@@ -65,7 +65,7 @@ export default function Board({ data }) {
   return (
     <>
       <S.Side>
-        {play.count ? <div className="rate">승률 : {play.black / play.count * 100}</div> : <div></div>}
+        {play.count ? <div className="rate">승률 : {play.black / play.count * 100}</div> : <div className="rate">승률 0%</div>}
         <RestartButton setBoard={setBoard} />
       </S.Side>
       <S.GameBoard>
