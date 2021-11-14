@@ -7,7 +7,6 @@ import RestartButton, { Restart } from "../../common/restart";
 export default function Board({ data }) {
   const [board, setBoard] = useState(data);
   const [put, setPut] = useState(false);
-
   const [play, setPlay] = useState({
     count: 0,
     black: 0,
@@ -66,7 +65,7 @@ export default function Board({ data }) {
   return (
     <>
       <S.Side>
-        <div className="rate">승률 :{play.black / play.count * 100}</div>
+        {play.count ? <div className="rate">승률 : {play.black / play.count * 100}</div> : <div></div>}
         <RestartButton setBoard={setBoard} />
       </S.Side>
       <S.GameBoard>
