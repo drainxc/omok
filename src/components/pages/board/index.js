@@ -2,7 +2,7 @@ import React, { useCallback, useMemo, useState } from "react";
 import * as S from "./styles";
 import { EverythingCompare } from "../../common/compare";
 import { Ai } from "../../common/AI";
-import RestartButton from "../../common/restart";
+import RestartButton, { Restart } from "../../common/restart";
 
 export default function Board({ data }) {
   const [board, setBoard] = useState(data);
@@ -18,7 +18,7 @@ export default function Board({ data }) {
           y: i,
           x: j,
         };
-        EverythingCompare(board, i, j);
+        EverythingCompare(board, i, j, setBoard);
         setTimeout(() => {
           // 0.3초 후에 AI 돌 놓기
           Ai(coordinate, setBoard);
@@ -68,4 +68,8 @@ export default function Board({ data }) {
       </S.GameBoard>
     </>
   );
+}
+
+export function Again(setBoard) {
+  Restart(setBoard);
 }

@@ -1,4 +1,6 @@
-export function Compare(y1, x1, y2, x2, board, y, x) {
+import { Again } from "../../pages/board";
+
+export function Compare(y1, x1, y2, x2, board, y, x, setBoard) {
   let point = 0;
   let value = 0;
   point += MainCompare(y1, x1, board, y, x, value); // 마지막으로 둔 돌을 기준으로 왼쪽부터 비교
@@ -6,8 +8,10 @@ export function Compare(y1, x1, y2, x2, board, y, x) {
   if (point === 4 && board[y][x] === 1) {
     // point가 4이면 승리
     alert("흑 승리!"); // 흑이 이겼을 때
+    Again(setBoard);
   } else if (point === 4 && board[y][x] === 2) {
     alert("백 승리!"); // 백이 이겼을 때
+    Again(setBoard);
   }
   return point; // point 리턴
 }
@@ -27,9 +31,9 @@ export function MainCompare(width, height, board, y, x, point) {
   return point; // point 리턴
 }
 
-export function EverythingCompare(board, y, x) {
-  Compare(1, 0, -1, 0, board, y, x);
-  Compare(0, 1, 0, -1, board, y, x);
-  Compare(1, 1, -1, -1, board, y, x);
-  Compare(1, -1, -1, 1, board, y, x);
+export function EverythingCompare(board, y, x, setBoard) {
+  Compare(1, 0, -1, 0, board, y, x, setBoard);
+  Compare(0, 1, 0, -1, board, y, x, setBoard);
+  Compare(1, 1, -1, -1, board, y, x, setBoard);
+  Compare(1, -1, -1, 1, board, y, x, setBoard);
 }

@@ -1,7 +1,17 @@
 import React from "react";
 import * as S from "./styles";
 export default function RestartButton({ setBoard }) {
-  function restart() {
+  
+  return (
+    <S.RestartDiv>
+      <div className="button">
+        <div className="restartButton" onClick={() => Restart(setBoard)}>Restart</div>
+      </div>
+    </S.RestartDiv>
+  );
+}
+
+export function Restart(setBoard) {
     setBoard([
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -25,11 +35,3 @@ export default function RestartButton({ setBoard }) {
       }
     }
   }
-  return (
-    <S.RestartDiv>
-      <div className="button">
-        <div className="restartButton" onClick={restart}>Restart</div>
-      </div>
-    </S.RestartDiv>
-  );
-}
