@@ -7,7 +7,7 @@ import putSound from "../../../asset/audio/putSound.mp3";
 
 export default function Board({ data }) {
   const [board, setBoard] = useState(data);
-  const [put, setPut] = useState(false);
+  const [put, setPut] = useState(true);
   const [play, setPlay] = useState({
     count: 0,
     black: 0,
@@ -16,9 +16,10 @@ export default function Board({ data }) {
 
   const change = useCallback(
     (i, j, e) => {
-      new Audio(putSound).play();
-      setPut(!put); // 자신이 둘 수 있을 때
-      if (board[i][j] === 0 && i !== 0 && i !== 14 && j !== 14) {
+      if (board[i][j] === 0 && i !== 0 && i !== 14 && j !== 14 && put) {
+        // 자신이 둘 수 있을 때
+        setPut(false);
+        new Audio(putSound).play();
         setBoard(board, (board[i][j] = 1)); // 배열 넣기
         const coordinate = {
           board: board,
@@ -29,12 +30,13 @@ export default function Board({ data }) {
           // 0.3초 후에 AI 돌 놓기
           Ai(coordinate, setBoard, play, setPlay);
           new Audio(putSound).play();
+          setPut(true);
         }, 1000); // AI 돌 놓기
         e.target.style = "opacity: 1;";
       } else {
         if (i === 0 || i === 14 || j === 14) {
           alert("놓을 수 없는 구역입니다!");
-        } else {
+        } else if (put) {
           alert("중복된 자리에는 놓을 수 없습니다!");
         }
       }
