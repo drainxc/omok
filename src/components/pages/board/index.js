@@ -71,7 +71,7 @@ export default function Board({ data }) {
     <>
       <S.Side>
         {play.count ? (
-          <div className="rate">승률 : {(play.black / play.count) * 100}</div>
+          <div className="rate">승률 : {(play.black / play.count) * 100}%</div>
         ) : (
           <div className="rate">승률 0%</div>
         )}
