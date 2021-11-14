@@ -8,6 +8,12 @@ export default function Board({ data }) {
   const [board, setBoard] = useState(data);
   const [put, setPut] = useState(false);
 
+  const [play, setPlay] = useState({
+    count: 0,
+    black: 0,
+    game: true
+  });
+
   const change = useCallback(
     (i, j, e) => {
       setPut(!put); // 자신이 둘 수 있을 때
@@ -20,7 +26,7 @@ export default function Board({ data }) {
         };
         setTimeout(() => {
           // 0.3초 후에 AI 돌 놓기
-          Ai(coordinate, setBoard);
+          Ai(coordinate, setBoard, play, setPlay);
         }, 300); // AI 돌 놓기
         e.target.style = "opacity: 1;";
       } else {
@@ -31,7 +37,7 @@ export default function Board({ data }) {
         }
       }
     },
-    [board, put]
+    [board, play, put]
   );
 
   const GameBoard = useMemo(() => {
@@ -59,9 +65,10 @@ export default function Board({ data }) {
 
   return (
     <>
-      <S.Button>
+      <S.Side>
+        <div className="rate">승률 :{play.black / play.count * 100}</div>
         <RestartButton setBoard={setBoard} />
-      </S.Button>
+      </S.Side>
       <S.GameBoard>
         <table>{GameBoard}</table>
       </S.GameBoard>
@@ -70,22 +77,6 @@ export default function Board({ data }) {
 }
 
 export function Again(setBoard) {
-  setBoard([
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ])
+  console.log('asdfasdf');
   Restart(setBoard);
 }

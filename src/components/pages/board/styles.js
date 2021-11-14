@@ -41,6 +41,13 @@ export const GameBoard = styled.div`
   }
 `;
 
-export const Button = styled.div`
-  
+export const Side = styled.div`
+  padding: 15% 5%;
+  .rate {
+    text-shadow: -2px 0 #593710, 0 2px #593710, 2px 0 #593710, 0 -2px #593710;
+    font-weight: 900;
+    font-size: 30px;
+    margin-left: 40px;
+    color: #F3D29E;
+  }
 `
