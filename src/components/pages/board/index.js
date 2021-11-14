@@ -16,16 +16,10 @@ export default function Board({ data }) {
 
   const change = useCallback(
     (i, j, e) => {
-<<<<<<< HEAD
       if (board[i][j] === 0 && i !== 0 && i !== 14 && j !== 14 && put) {
         // 자신이 둘 수 있을 때
         setPut(false);
         new Audio(putSound).play();
-=======
-      new Audio(putSound).play();
-      setPut(!put); // 자신이 둘 수 있을 때
-      if (board[i][j] === 0 && i !== 0 && i !== 14 && j !== 14) {
->>>>>>> master
         setBoard(board, (board[i][j] = 1)); // 배열 넣기
         const coordinate = {
           board: board,
@@ -36,10 +30,7 @@ export default function Board({ data }) {
           // 0.3초 후에 AI 돌 놓기
           Ai(coordinate, setBoard, play, setPlay);
           new Audio(putSound).play();
-<<<<<<< HEAD
           setPut(true);
-=======
->>>>>>> master
         }, 1000); // AI 돌 놓기
         e.target.style = "opacity: 1;";
       } else {
