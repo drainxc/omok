@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
-import floor from "../asset/floor.png";
+import floor from "../asset/img/floor.png";
 
 const GlobalStyle = createGlobalStyle`
   ${reset};
