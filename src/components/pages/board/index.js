@@ -25,15 +25,17 @@ export default function Board({ data }) {
         put = false;
         new Audio(putSound).play();
         setBoard(board, (board[i][j] = 1)); // 배열 넣기
-        const coordinate = {
+        const manage = {
           board: board,
           setBoard: setBoard,
+          play: play,
+          setPlay: setPlay,
           y: i,
           x: j,
         };
         setTimeout(() => {
           // 0.3초 후에 AI 돌 놓기
-          Ai(coordinate, play, setPlay);
+          Ai(manage);
           if (reset) {
             Reset(setBoard);
             reset = false;
