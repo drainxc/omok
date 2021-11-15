@@ -17,45 +17,31 @@ export function Ai(manage) {
         // 가로로 공격할 때
         Put(1, 0, -1, 0, beforeY, beforeX);
         return (document.getElementById(`${y} ${x}`).style = drawStyle);
-      } else if (
-        Compare(0, 1, 0, -1, manage, beforeY, beforeX) >= i
-      ) {
+      } else if (Compare(0, 1, 0, -1, manage, beforeY, beforeX) >= i) {
         // 세로로 공격할 때
         Put(0, 1, 0, -1, beforeY, beforeX);
         return (document.getElementById(`${y} ${x}`).style = drawStyle);
-      } else if (
-        Compare(1, 1, -1, -1, manage, beforeY, beforeX) >= i
-      ) {
+      } else if (Compare(1, 1, -1, -1, manage, beforeY, beforeX) >= i) {
         // 대각선으로 공격할 때
         Put(1, 1, -1, -1, beforeY, beforeX);
         return (document.getElementById(`${y} ${x}`).style = drawStyle);
-      } else if (
-        Compare(1, -1, -1, 1, manage, beforeY, beforeX) >= i
-      ) {
+      } else if (Compare(1, -1, -1, 1, manage, beforeY, beforeX) >= i) {
         // 대각선(반대)으로 공격할 때
         Put(1, -1, -1, 1, beforeY, beforeX);
         return (document.getElementById(`${y} ${x}`).style = drawStyle);
-      } else if (
-        Compare(1, 0, -1, 0, manage, manage.y, manage.x) >= i
-      ) {
+      } else if (Compare(1, 0, -1, 0, manage, manage.y, manage.x) >= i) {
         // 가로로 공격을 받았을 때
         Put(1, 0, -1, 0, manage.y, manage.x);
         return (document.getElementById(`${y} ${x}`).style = drawStyle);
-      } else if (
-        Compare(0, 1, 0, -1, manage, manage.y, manage.x) >= i
-      ) {
+      } else if (Compare(0, 1, 0, -1, manage, manage.y, manage.x) >= i) {
         // 세로로 공격을 받았을 때
         Put(0, 1, 0, -1, manage.y, manage.x);
         return (document.getElementById(`${y} ${x}`).style = drawStyle);
-      } else if (
-        Compare(1, 1, -1, -1, manage, manage.y, manage.x) >= i
-      ) {
+      } else if (Compare(1, 1, -1, -1, manage, manage.y, manage.x) >= i) {
         // 대각선으로 공격을 받았을 때
         Put(1, 1, -1, -1, manage.y, manage.x);
         return (document.getElementById(`${y} ${x}`).style = drawStyle);
-      } else if (
-        Compare(1, -1, -1, 1, manage, manage.y, manage.x) >= i
-      ) {
+      } else if (Compare(1, -1, -1, 1, manage, manage.y, manage.x) >= i) {
         // 대각선(반대)으로 공격을 받았을 떄
         Put(1, -1, -1, 1, manage.y, manage.x);
         return (document.getElementById(`${y} ${x}`).style = drawStyle);

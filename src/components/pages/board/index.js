@@ -42,7 +42,7 @@ export default function Board({ data }) {
           } else {
             new Audio(putSound).play();
           }
-          put = true
+          put = true;
         }, 1500); // AI 돌 놓기
         e.target.style = "opacity: 1;";
       } else {
