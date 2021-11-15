@@ -5,20 +5,24 @@ import { Ai } from "../../common/AI";
 import RestartButton, { Restart } from "../../common/restart";
 import putSound from "../../../asset/audio/putSound.mp3";
 
+let reset = false;
+
 export default function Board({ data }) {
   const [board, setBoard] = useState(data);
-  const [put, setPut] = useState(true);
   const [play, setPlay] = useState({
     count: 0,
     black: 0,
     game: true,
   });
 
+  let put = true;
+
   const change = useCallback(
     (i, j, e) => {
       if (board[i][j] === 0 && i !== 0 && i !== 14 && j !== 14 && put) {
         // 자신이 둘 수 있을 때
-        setPut(false);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        put = false;
         new Audio(putSound).play();
         setBoard(board, (board[i][j] = 1)); // 배열 넣기
         const coordinate = {
@@ -29,9 +33,14 @@ export default function Board({ data }) {
         setTimeout(() => {
           // 0.3초 후에 AI 돌 놓기
           Ai(coordinate, setBoard, play, setPlay);
-          new Audio(putSound).play();
-          setPut(true);
-        }, 1000); // AI 돌 놓기
+          if (reset) {
+            Again(setBoard);
+            reset = false;
+          } else {
+            new Audio(putSound).play();
+          }
+          put = true
+        }, 1500); // AI 돌 놓기
         e.target.style = "opacity: 1;";
       } else {
         if (i === 0 || i === 14 || j === 14) {
@@ -41,7 +50,7 @@ export default function Board({ data }) {
         }
       }
     },
-    [board, play, put]
+    [board, play]
   );
 
   const GameBoard = useMemo(() => {
@@ -86,4 +95,5 @@ export default function Board({ data }) {
 
 export function Again(setBoard) {
   Restart(setBoard);
+  reset = true;
 }
