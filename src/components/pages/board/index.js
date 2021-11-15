@@ -34,7 +34,7 @@ export default function Board({ data }) {
           // 0.3초 후에 AI 돌 놓기
           Ai(coordinate, setBoard, play, setPlay);
           if (reset) {
-            Again(setBoard);
+            Reset(setBoard);
             reset = false;
           } else {
             new Audio(putSound).play();
@@ -93,7 +93,7 @@ export default function Board({ data }) {
   );
 }
 
-export function Again(setBoard) {
+export function Reset(setBoard) {
   Restart(setBoard);
   reset = true;
 }
