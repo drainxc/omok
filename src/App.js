@@ -1,11 +1,11 @@
-import MainPage from "./components/pages/mainPage";
+import Board from "./components/pages/board";
 import GlobalStyle from "./style/styles";
 
 function App() {
   return (
     <>
       <GlobalStyle />
-      <MainPage />
+      <Board/>
     </>
   );
 }

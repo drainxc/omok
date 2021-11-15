@@ -48,6 +48,12 @@ export const Side = styled.div`
     font-weight: 900;
     font-size: 30px;
     margin-left: 40px;
-    color: #F3D29E;
+    color: #f3d29e;
   }
-`
+`;
+
+export const MainDiv = styled.div`
+  display: flex;
+  justify-content: space-around;
+  padding: 2%;
+`;

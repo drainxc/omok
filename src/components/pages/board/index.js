@@ -4,10 +4,11 @@ import { EverythingCompare } from "../../../lib/function/compare";
 import { Ai } from "../../../lib/function/AI";
 import RestartButton, { Restart } from "../../common/restart";
 import putSound from "../../../asset/audio/putSound.mp3";
+import { data } from "../../../lib/export/data";
 
 let reset = false;
 
-export default function Board({ data }) {
+export default function Board() {
   const [board, setBoard] = useState(data);
   const [play, setPlay] = useState({
     count: 0,
@@ -80,10 +81,12 @@ export default function Board({ data }) {
   }, [board, change]);
 
   return (
-    <>
+    <S.MainDiv>
       <S.Side>
         {play.count ? (
-          <div className="rate">승률 : {Math.floor((play.black / play.count) * 100)}%</div>
+          <div className="rate">
+            승률 : {Math.floor((play.black / play.count) * 100)}%
+          </div>
         ) : (
           <div className="rate">승률 0%</div>
         )}
@@ -92,7 +95,7 @@ export default function Board({ data }) {
       <S.GameBoard>
         <table>{GameBoard}</table>
       </S.GameBoard>
-    </>
+    </S.MainDiv>
   );
 }
 
