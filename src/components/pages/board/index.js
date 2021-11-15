@@ -27,12 +27,13 @@ export default function Board({ data }) {
         setBoard(board, (board[i][j] = 1)); // 배열 넣기
         const coordinate = {
           board: board,
+          setBoard: setBoard,
           y: i,
           x: j,
         };
         setTimeout(() => {
           // 0.3초 후에 AI 돌 놓기
-          Ai(coordinate, setBoard, play, setPlay);
+          Ai(coordinate, play, setPlay);
           if (reset) {
             Reset(setBoard);
             reset = false;

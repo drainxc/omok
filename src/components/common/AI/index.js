@@ -2,59 +2,59 @@ import { Compare, EverythingCompare, MainCompare } from "../compare";
 
 let beforeX, beforeY;
 
-export function Ai(coordinate, setBoard, play, setPlay) {
+export function Ai(coordinate, play, setPlay) {
   let y, x; // 좌표 선언
   const drawStyle = "opacity: 1; background-color: white;"; // 색 및 투명도
   if (
-    Compare(1, 0, -1, 0, coordinate.board, coordinate.y, coordinate.x, setBoard, play, setPlay) !== 0 ||
-    Compare(0, 1, 0, -1, coordinate.board, coordinate.y, coordinate.x, setBoard, play, setPlay) !== 0 ||
-    Compare(1, 1, -1, -1, coordinate.board, coordinate.y, coordinate.x, setBoard, play, setPlay) !== 0 ||
-    Compare(1, -1, -1, 1, coordinate.board, coordinate.y, coordinate.x, setBoard, play, setPlay) !== 0
+    Compare(1, 0, -1, 0, coordinate, coordinate.y, coordinate.x, play, setPlay) !== 0 ||
+    Compare(0, 1, 0, -1, coordinate, coordinate.y, coordinate.x, play, setPlay) !== 0 ||
+    Compare(1, 1, -1, -1, coordinate, coordinate.y, coordinate.x, play, setPlay) !== 0 ||
+    Compare(1, -1, -1, 1, coordinate, coordinate.y, coordinate.x, play, setPlay) !== 0
   ) {
     // 흑돌 주변에 아무 것도 없을 때
     for (let i = 3; i > 0; i--) {
-      if (Compare(1, 0, -1, 0, coordinate.board, beforeY, beforeX, setBoard, play, setPlay) >= i) {
+      if (Compare(1, 0, -1, 0, coordinate, beforeY, beforeX, play, setPlay) >= i) {
         // 가로로 공격할 때
         Put(1, 0, -1, 0, beforeY, beforeX);
         return (document.getElementById(`${y} ${x}`).style = drawStyle);
       } else if (
-        Compare(0, 1, 0, -1, coordinate.board, beforeY, beforeX, setBoard, play, setPlay) >= i
+        Compare(0, 1, 0, -1, coordinate, beforeY, beforeX, play, setPlay) >= i
       ) {
         // 세로로 공격할 때
         Put(0, 1, 0, -1, beforeY, beforeX);
         return (document.getElementById(`${y} ${x}`).style = drawStyle);
       } else if (
-        Compare(1, 1, -1, -1, coordinate.board, beforeY, beforeX, setBoard, play, setPlay) >= i
+        Compare(1, 1, -1, -1, coordinate, beforeY, beforeX, play, setPlay) >= i
       ) {
         // 대각선으로 공격할 때
         Put(1, 1, -1, -1, beforeY, beforeX);
         return (document.getElementById(`${y} ${x}`).style = drawStyle);
       } else if (
-        Compare(1, -1, -1, 1, coordinate.board, beforeY, beforeX, setBoard, play, setPlay) >= i
+        Compare(1, -1, -1, 1, coordinate, beforeY, beforeX, play, setPlay) >= i
       ) {
         // 대각선(반대)으로 공격할 때
         Put(1, -1, -1, 1, beforeY, beforeX);
         return (document.getElementById(`${y} ${x}`).style = drawStyle);
       } else if (
-        Compare(1, 0, -1, 0, coordinate.board, coordinate.y, coordinate.x, setBoard, play, setPlay) >= i
+        Compare(1, 0, -1, 0, coordinate, coordinate.y, coordinate.x, play, setPlay) >= i
       ) {
         // 가로로 공격을 받았을 때
         Put(1, 0, -1, 0, coordinate.y, coordinate.x);
         return (document.getElementById(`${y} ${x}`).style = drawStyle);
       } else if (
-        Compare(0, 1, 0, -1, coordinate.board, coordinate.y, coordinate.x, setBoard, play, setPlay) >= i
+        Compare(0, 1, 0, -1, coordinate, coordinate.y, coordinate.x, play, setPlay) >= i
       ) {
         // 세로로 공격을 받았을 때
         Put(0, 1, 0, -1, coordinate.y, coordinate.x);
         return (document.getElementById(`${y} ${x}`).style = drawStyle);
       } else if (
-        Compare(1, 1, -1, -1, coordinate.board, coordinate.y, coordinate.x, setBoard, play, setPlay) >= i
+        Compare(1, 1, -1, -1, coordinate, coordinate.y, coordinate.x, play, setPlay) >= i
       ) {
         // 대각선으로 공격을 받았을 때
         Put(1, 1, -1, -1, coordinate.y, coordinate.x);
         return (document.getElementById(`${y} ${x}`).style = drawStyle);
       } else if (
-        Compare(1, -1, -1, 1, coordinate.board, coordinate.y, coordinate.x, setBoard, play, setPlay) >= i
+        Compare(1, -1, -1, 1, coordinate, coordinate.y, coordinate.x, play, setPlay) >= i
       ) {
         // 대각선(반대)으로 공격을 받았을 떄
         Put(1, -1, -1, 1, coordinate.y, coordinate.x);
@@ -103,9 +103,9 @@ export function Ai(coordinate, setBoard, play, setPlay) {
     }
   }
   function setting() {
-    setBoard(coordinate.board, (coordinate.board[y][x] = 2));
-    EverythingCompare(coordinate.board, y, x, setBoard, play, setPlay);
-    EverythingCompare(coordinate.board, coordinate.y, coordinate.x, setBoard, play, setPlay);
+    coordinate.setBoard(coordinate.board, (coordinate.board[y][x] = 2));
+    EverythingCompare(coordinate, y, x, play, setPlay);
+    EverythingCompare(coordinate, coordinate.y, coordinate.x, play, setPlay);
     setPlay(play, (play.game = true));
     beforeX = x;
     beforeY = y;
