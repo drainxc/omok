@@ -1,4 +1,4 @@
-import { Reset } from "../../pages/board";
+import { Reset } from "../../../components/pages/board";
 
 export function Compare(y1, x1, y2, x2, manage, y, x) {
   let point = 0;

@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo, useState } from "react";
 import * as S from "./styles";
-import { EverythingCompare } from "../../common/compare";
-import { Ai } from "../../common/AI";
+import { EverythingCompare } from "../../../lib/function/compare";
+import { Ai } from "../../../lib/function/AI";
 import RestartButton, { Restart } from "../../common/restart";
 import putSound from "../../../asset/audio/putSound.mp3";
 
