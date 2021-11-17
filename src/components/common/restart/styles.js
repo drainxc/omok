@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const RestartDiv = styled.div`
+export const Button = styled.div`
   .button {
     background: url("http://1.bp.blogspot.com/-tXavBQFjNFQ/VMSaYaq7PtI/AAAAAAAADSc/awMPRe3yu5A/s1600/wood_pattern.png");
     width: 300px;
