@@ -1,3 +1,5 @@
+/* eslint-disable no-sequences */
+/* eslint-disable no-loop-func */
 import { Compare, EverythingCompare, MainCompare } from "../compare";
 
 let beforeX, beforeY;
@@ -46,7 +48,6 @@ export function Ai(manage) {
         Put(1, -1, -1, 1, manage.y, manage.x);
         return (document.getElementById(`${y} ${x}`).style = drawStyle);
       }
-      // eslint-disable-next-line no-loop-func
       function Put(x1, y1, x2, y2, Y, X) {
         const randomNumber = getRandomIntInclusive(0, 1);
         let tmp;
@@ -62,14 +63,14 @@ export function Ai(manage) {
         x = X + x1 * (MainCompare(x1, y1, manage.board, Y, X, 0) + 1); // x좌표 // 공격을 받았을 때 수비
         if (manage.board[y][x] === 0) {
           // 좌표가 빈 배열이라면 돌을 놓고 리턴
-          setting(); // eslint-disable-next-line no-sequences
+          setting();
           return y, x;
         } else {
           // 좌표가 빈 배열이 아니라면 반대쪽에 돌을 놓고 리턴
           y = Y + y2 * (MainCompare(x2, y2, manage.board, Y, X, 0) + 1); // x좌표 반대쪽
           x = X + x2 * (MainCompare(x2, y2, manage.board, Y, X, 0) + 1); // y좌표 반대쪽
           if (manage.board[y][x] === 0) {
-            setting(); // eslint-disable-next-line no-sequences
+            setting();
             return y, x;
           } else {
             return;

@@ -36,7 +36,6 @@ export default function Board({ single }) {
         if (single) {
           // 혼자 하기 버튼을 눌렀을 때
           e.target.style = "opacity: 1;";
-          // eslint-disable-next-line react-hooks/exhaustive-deps
           put = false;
           new Audio(putSound).play();
           setTimeout(() => {
@@ -75,7 +74,6 @@ export default function Board({ single }) {
           }
           manage.setPlay(manage.play, (manage.play.game = true)); // 게임 true로 바꾸기
           EverythingCompare(manage, i, j); // 승리 조건
-          // eslint-disable-next-line react-hooks/exhaustive-deps
         }
       } else {
         if (i === 0 || i === 14 || j === 14) {
