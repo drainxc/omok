@@ -10,7 +10,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<MainPage/>} />
-          <Route path="/game" element={<Board/>} />
+          <Route path="/singleGame" element={<Board single={true}/>} />
+          <Route path="/localGame" element={<Board single={false}/>} />
         </Routes>
       </BrowserRouter>
     </>
