@@ -6,6 +6,7 @@ import RestartButton, { Restart } from "../../common/restart";
 import putSound from "../../../asset/audio/putSound.mp3";
 import { data } from "../../../lib/export/data";
 import { EverythingCompare } from "../../../lib/function/compare";
+import { Single } from "../../../lib/function/single";
 
 let reset = false;
 
@@ -38,17 +39,8 @@ export default function Board({ single }) {
           e.target.style = "opacity: 1;";
           put = false;
           new Audio(putSound).play();
-          setTimeout(() => {
-            // 0.3초 후에 AI 돌 놓기
-            Ai(manage);
-            if (reset) {
-              Reset(setBoard);
-              reset = false;
-            } else {
-              new Audio(putSound).play();
-            }
-            put = !put;
-          }, 1500); // AI 돌 놓기
+          Single(manage, reset, setBoard, put, putSound);
+          put = !put;
         } else {
           // 친구와 하기 버튼을 눌렀을 때
           new Audio(putSound).play();
