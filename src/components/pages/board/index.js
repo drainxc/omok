@@ -34,7 +34,7 @@ export default function Board({ single }) {
           y: i,
           x: j,
         };
-        if (single) {
+        if (single) { // 혼자하기 버튼을 눌렀을 때
           e.target.style = "opacity: 1;";
           // eslint-disable-next-line react-hooks/exhaustive-deps
           put = false;
@@ -50,7 +50,7 @@ export default function Board({ single }) {
             }
             put = !put;
           }, 1500); // AI 돌 놓기
-        } else {
+        } else { // 친구와 하기 버튼을 눌렀을 때
           for (let x = 0; x < 15; x++) {
             for (let y = 0; y < 15; y++) {
               if (board[y][x] === 0) {
@@ -59,29 +59,29 @@ export default function Board({ single }) {
                     "background-color: white";
                 } else {
                   document.getElementById(`${y} ${x}`).style =
-                    "background-color: black";
+                    "background-color: black"; // 호버 색상 바꾸기
                 }
               }
             }
           }
           if (black) {
-            e.target.style = "opacity: 1; background-color: black;";
-            color = 2;
+            e.target.style = "opacity: 1; background-color: black;"; // 흑돌 놓기
+            color = 2; // 백돌 준비
           } else {
-            e.target.style = "opacity: 1; background-color: white;";
-            color = 1;
+            e.target.style = "opacity: 1; background-color: white;"; // 백돌 놓기
+            color = 1; // 흑돌 준비
           }
-          manage.setPlay(manage.play, (manage.play.game = true));
-          EverythingCompare(manage, i, j);
+          manage.setPlay(manage.play, (manage.play.game = true)); // 게임 true로 바꾸기
+          EverythingCompare(manage, i, j); // 승리 조건
           // eslint-disable-next-line react-hooks/exhaustive-deps
-          black = !black;
+          black = !black; // 색상 전환
         }
       } else {
         if (i === 0 || i === 14 || j === 14) {
           alert("놓을 수 없는 구역입니다!");
         } else if (put) {
           alert("중복된 자리에는 놓을 수 없습니다!");
-        }
+        } // 예외 처리
       }
     },
     [board, play]

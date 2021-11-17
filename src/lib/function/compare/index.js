@@ -41,5 +41,5 @@ export function EverythingCompare(coordinate, y, x) {
   Compare(1, 0, -1, 0, coordinate, y, x);
   Compare(0, 1, 0, -1, coordinate, y, x);
   Compare(1, 1, -1, -1, coordinate, y, x);
-  Compare(1, -1, -1, 1, coordinate, y, x);
+  Compare(1, -1, -1, 1, coordinate, y, x); // 가로 세로 대각선 비교
 }

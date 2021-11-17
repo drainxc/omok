@@ -89,12 +89,12 @@ export function Ai(manage) {
     }
   }
   function setting() {
-    manage.setBoard(manage.board, (manage.board[y][x] = 2));
+    manage.setBoard(manage.board, (manage.board[y][x] = 2)); // 백돌 놓기
     EverythingCompare(manage, y, x);
-    EverythingCompare(manage, manage.y, manage.x);
-    manage.setPlay(manage.play, (manage.play.game = true));
+    EverythingCompare(manage, manage.y, manage.x); // 승리 조건
+    manage.setPlay(manage.play, (manage.play.game = true)); // 게임 true로 설정
     beforeX = x;
-    beforeY = y;
+    beforeY = y; // 이전 좌표 기억
   }
 }
 
