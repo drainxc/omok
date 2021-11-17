@@ -51,6 +51,19 @@ export default function Board({ single }) {
             put = !put;
           }, 1500); // AI 돌 놓기
         } else {
+          for (let x = 0; x < 15; x++) {
+            for (let y = 0; y < 15; y++) {
+              if (board[y][x] === 0) {
+                if (black) {
+                  document.getElementById(`${y} ${x}`).style =
+                    "background-color: white";
+                } else {
+                  document.getElementById(`${y} ${x}`).style =
+                    "background-color: black";
+                }
+              }
+            }
+          }
           if (black) {
             e.target.style = "opacity: 1; background-color: black;";
             color = 2;
