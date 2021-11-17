@@ -53,6 +53,7 @@ export default function Board({ single }) {
           }, 1500); // AI 돌 놓기
         } else {
           // 친구와 하기 버튼을 눌렀을 때
+          new Audio(putSound).play();
           for (let x = 0; x < 15; x++) {
             for (let y = 0; y < 15; y++) {
               if (board[y][x] === 0) {
