@@ -103,13 +103,13 @@ export default function Board({ single }) {
   return (
     <S.MainDiv>
       <S.Side>
-        <div className="rate">
+        <div className="rate" id="black">
           흑 승률 :{" "}
           {play.count
             ? `${Math.floor((play.black / play.count) * 100)}%`
             : "0%"}
         </div>
-        <div className="rate">
+        <div className="rate" id="white">
           백 승률 :{" "}
           {play.count
             ? `${Math.floor(((play.count - play.black) / play.count) * 100)}%`
