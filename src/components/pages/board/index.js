@@ -113,21 +113,18 @@ export default function Board({ single }) {
   return (
     <S.MainDiv>
       <S.Side>
-        {play.count ? (
-          <div className="rate">
-            흑 승률 : {Math.floor((play.black / play.count) * 100)}%
-          </div>
-        ) : (
-          <div className="rate">흑 승률 0%</div>
-        )}
-        {play.count ? (
-          <div className="rate">
-            백 승률 : {Math.floor(((play.count - play.black) / play.count) * 100)}
-            %
-          </div>
-        ) : (
-          <div className="rate">백 승률 0%</div>
-        )}
+        <div className="rate">
+          흑 승률 :{" "}
+          {play.count
+            ? `${Math.floor((play.black / play.count) * 100)}%`
+            : "0%"}
+        </div>
+        <div className="rate">
+          백 승률 :{" "}
+          {play.count
+            ? `${Math.floor(((play.count - play.black) / play.count) * 100)}%`
+            : "0%"}
+        </div>
         <RestartButton setBoard={setBoard} />
       </S.Side>
       <S.GameBoard>
