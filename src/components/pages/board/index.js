@@ -58,6 +58,7 @@ export default function Board({ single }) {
             e.target.style = "opacity: 1; background-color: white;";
             color = 1;
           }
+          manage.setPlay(manage.play, (manage.play.game = true));
           EverythingCompare(manage, i, j);
           // eslint-disable-next-line react-hooks/exhaustive-deps
           black = !black;
