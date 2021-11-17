@@ -52,8 +52,8 @@ export default function Board({ single }) {
         } else {
           // 친구와 하기 버튼을 눌렀을 때
           new Audio(putSound).play();
-          for (let x = 0; x < 15; x++) {
-            for (let y = 0; y < 15; y++) {
+          for (let x in board) {
+            for (let y in board[0]) {
               if (board[y][x] === 0) {
                 if (color === 1) {
                   document.getElementById(`${y} ${x}`).style =
