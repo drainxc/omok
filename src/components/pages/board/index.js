@@ -34,7 +34,8 @@ export default function Board({ single }) {
           y: i,
           x: j,
         };
-        if (single) { // 혼자하기 버튼을 눌렀을 때
+        if (single) {
+          // 혼자 하기 버튼을 눌렀을 때
           e.target.style = "opacity: 1;";
           // eslint-disable-next-line react-hooks/exhaustive-deps
           put = false;
@@ -50,7 +51,8 @@ export default function Board({ single }) {
             }
             put = !put;
           }, 1500); // AI 돌 놓기
-        } else { // 친구와 하기 버튼을 눌렀을 때
+        } else {
+          // 친구와 하기 버튼을 눌렀을 때
           for (let x = 0; x < 15; x++) {
             for (let y = 0; y < 15; y++) {
               if (board[y][x] === 0) {

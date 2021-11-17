@@ -9,9 +9,9 @@ function App() {
       <GlobalStyle />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<MainPage/>} />
-          <Route path="/singleGame" element={<Board single={true}/>} />
-          <Route path="/localGame" element={<Board single={false}/>} />
+          <Route path="/" element={<MainPage />} />
+          <Route path="/singleGame" element={<Board single={true} />} />
+          <Route path="/localGame" element={<Board single={false} />} />
         </Routes>
       </BrowserRouter>
     </>

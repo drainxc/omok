@@ -11,7 +11,7 @@ export default function MainPage() {
         <R.Button>
           <Link to="/singleGame" style={{ textDecoration: "none" }}>
             <div className="button">
-              <div>혼자하기</div>
+              <div>혼자 하기</div>
             </div>
           </Link>
           <Link to="/localGame" style={{ textDecoration: "none" }}>
