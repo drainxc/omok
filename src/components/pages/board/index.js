@@ -5,6 +5,7 @@ import { Ai } from "../../../lib/function/AI";
 import RestartButton, { Restart } from "../../common/restart";
 import putSound from "../../../asset/audio/putSound.mp3";
 import { data } from "../../../lib/export/data";
+import { EverythingCompare } from "../../../lib/function/compare";
 
 let reset = false;
 
@@ -25,19 +26,19 @@ export default function Board({ single }) {
         // 자신이 둘 수 있을 때
         console.log(board);
         setBoard(board, (board[i][j] = color)); // 배열 넣기
+        const manage = {
+          board: board,
+          setBoard: setBoard,
+          play: play,
+          setPlay: setPlay,
+          y: i,
+          x: j,
+        };
         if (single) {
           e.target.style = "opacity: 1;";
           // eslint-disable-next-line react-hooks/exhaustive-deps
           put = false;
           new Audio(putSound).play();
-          const manage = {
-            board: board,
-            setBoard: setBoard,
-            play: play,
-            setPlay: setPlay,
-            y: i,
-            x: j,
-          };
           setTimeout(() => {
             // 0.3초 후에 AI 돌 놓기
             Ai(manage);
@@ -57,6 +58,7 @@ export default function Board({ single }) {
             e.target.style = "opacity: 1; background-color: white;";
             color = 1;
           }
+          EverythingCompare(manage, i, j);
           // eslint-disable-next-line react-hooks/exhaustive-deps
           black = !black;
         }
