@@ -18,7 +18,6 @@ export default function Board({ single }) {
   });
   let color = 1;
   let put = true;
-  let black = true;
 
   const change = useCallback(
     (i, j, e) => {
@@ -57,7 +56,7 @@ export default function Board({ single }) {
           for (let x = 0; x < 15; x++) {
             for (let y = 0; y < 15; y++) {
               if (board[y][x] === 0) {
-                if (black) {
+                if (color === 1) {
                   document.getElementById(`${y} ${x}`).style =
                     "background-color: white";
                 } else {
@@ -67,7 +66,7 @@ export default function Board({ single }) {
               }
             }
           }
-          if (black) {
+          if (color === 1) {
             e.target.style = "opacity: 1; background-color: black;"; // 흑돌 놓기
             color = 2; // 백돌 준비
           } else {
@@ -77,7 +76,6 @@ export default function Board({ single }) {
           manage.setPlay(manage.play, (manage.play.game = true)); // 게임 true로 바꾸기
           EverythingCompare(manage, i, j); // 승리 조건
           // eslint-disable-next-line react-hooks/exhaustive-deps
-          black = !black; // 색상 전환
         }
       } else {
         if (i === 0 || i === 14 || j === 14) {
