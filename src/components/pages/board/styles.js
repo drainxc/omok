@@ -42,13 +42,16 @@ export const GameBoard = styled.div`
 `;
 
 export const Side = styled.div`
-  padding: 15% 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   .rate {
     margin-top: 10px;
     text-shadow: -2px 0 #593710, 0 2px #593710, 2px 0 #593710, 0 -2px #593710;
     font-weight: 900;
     font-size: 30px;
-    margin-left: 40px;
+    margin-left: -120px;
     color: #f3d29e;
   }
 `;
