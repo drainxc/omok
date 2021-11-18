@@ -8,6 +8,7 @@ import { data } from "../../../lib/export/data";
 import { EverythingCompare } from "../../../lib/function/compare";
 import { Single } from "../../../lib/function/single";
 import { Local } from "../../../lib/function/local";
+import { Position } from "../../../lib/function/position";
 
 let reset = false;
 
@@ -25,7 +26,6 @@ export default function Board({ single }) {
     (i, j, e) => {
       if (board[i][j] === 0 && i !== 0 && i !== 14 && j !== 14 && put) {
         // 자신이 둘 수 있을 때
-        console.log(board);
         setBoard(board, (board[i][j] = color)); // 배열 넣기
         const manage = {
           board: board,
@@ -51,11 +51,7 @@ export default function Board({ single }) {
           color = Local(putSound, color, e, manage);
         }
       } else {
-        if (i === 0 || i === 14 || j === 14) {
-          alert("놓을 수 없는 구역입니다!");
-        } else if (put) {
-          alert("중복된 자리에는 놓을 수 없습니다!");
-        } // 예외 처리
+        Position(i, j, put);
       }
     },
     [board, play]
