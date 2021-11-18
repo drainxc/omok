@@ -36,11 +36,15 @@ export default function Board({ single }) {
         };
         if (single) {
           // 혼자 하기 버튼을 눌렀을 때
-          e.target.style = "opacity: 1;";
           put = false;
-          new Audio(putSound).play();
-          Single(manage, reset, setBoard, putSound);
+          Single(manage, putSound, e);
           setTimeout(() => {
+            if (reset) {
+              Reset(setBoard);
+              reset = false;
+            } else {
+              new Audio(putSound).play();
+            }
             put = true;
           }, 1500);
         } else {
