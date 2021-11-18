@@ -1,11 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useCallback, useMemo, useState } from "react";
 import * as S from "./styles";
-import { Ai } from "../../../lib/function/AI";
 import RestartButton, { Restart } from "../../common/restart";
 import putSound from "../../../asset/audio/putSound.mp3";
 import { data } from "../../../lib/export/data";
-import { EverythingCompare } from "../../../lib/function/compare";
 import { Single } from "../../../lib/function/single";
 import { Local } from "../../../lib/function/local";
 import { Position } from "../../../lib/function/position";
