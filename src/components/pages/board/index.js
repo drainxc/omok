@@ -48,7 +48,7 @@ export default function Board({ single }) {
           }, 1500);
         } else {
           // 친구와 하기 버튼을 눌렀을 때
-          color = Local(putSound, board, color, e, manage, i, j);
+          color = Local(putSound, color, e, manage);
         }
       } else {
         if (i === 0 || i === 14 || j === 14) {
