@@ -7,6 +7,7 @@ import putSound from "../../../asset/audio/putSound.mp3";
 import { data } from "../../../lib/export/data";
 import { EverythingCompare } from "../../../lib/function/compare";
 import { Single } from "../../../lib/function/single";
+import { Local } from "../../../lib/function/local";
 
 let reset = false;
 
@@ -42,36 +43,12 @@ export default function Board({ single }) {
             if (reset) {
               Reset(setBoard);
               reset = false;
-            } else {
-              new Audio(putSound).play();
-            }
+            } else new Audio(putSound).play();
             put = true;
           }, 1500);
         } else {
           // 친구와 하기 버튼을 눌렀을 때
-          new Audio(putSound).play();
-          for (let x in board) {
-            for (let y in board[0]) {
-              if (board[y][x] === 0) {
-                if (color === 1) {
-                  document.getElementById(`${y} ${x}`).style =
-                    "background-color: white";
-                } else {
-                  document.getElementById(`${y} ${x}`).style =
-                    "background-color: black"; // 호버 색상 바꾸기
-                }
-              }
-            }
-          }
-          if (color === 1) {
-            e.target.style = "opacity: 1; background-color: black;"; // 흑돌 놓기
-            color = 2; // 백돌 준비
-          } else {
-            e.target.style = "opacity: 1; background-color: white;"; // 백돌 놓기
-            color = 1; // 흑돌 준비
-          }
-          manage.setPlay(manage.play, (manage.play.game = true)); // 게임 true로 바꾸기
-          EverythingCompare(manage, i, j); // 승리 조건
+          color = Local(putSound, board, color, e, manage, i, j);
         }
       } else {
         if (i === 0 || i === 14 || j === 14) {
