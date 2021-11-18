@@ -39,8 +39,10 @@ export default function Board({ single }) {
           e.target.style = "opacity: 1;";
           put = false;
           new Audio(putSound).play();
-          Single(manage, reset, setBoard, put, putSound);
-          put = !put;
+          Single(manage, reset, setBoard, putSound);
+          setTimeout(() => {
+            put = true;
+          }, 1500);
         } else {
           // 친구와 하기 버튼을 눌렀을 때
           new Audio(putSound).play();
