@@ -29,7 +29,6 @@ export const GameBoard = styled.div`
     background-color: black;
     margin-left: 24px;
     margin-top: 24px;
-    opacity: 0;
   }
   span {
     pointer-events: none;
