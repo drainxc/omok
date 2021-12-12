@@ -9,11 +9,11 @@ export function Compare(y1, x1, y2, x2, manage, y, x) {
   if (point === 4) {
     // point가 4이면 승리
     if (manage.board[y][x] === 1 && manage.play.game) {
-      alert("흑 승리!"); // 흑이 이겼을 때
+      alert("🎉흑 돌이 이겼습니다!🎉"); // 흑이 이겼을 때
       manage.setPlay(manage.play, (manage.play.black += 1));
       manage.setPlay(manage.play, (manage.play.count += 1));
     } else if (manage.board[y][x] === 2 && manage.play.game) {
-      alert("백 승리!"); // 백이 이겼을 때
+      alert("🎉백 돌이 이겼습니다!🎉"); // 백이 이겼을 때
       manage.setPlay(manage.play, (manage.play.count += 1));
     }
     manage.setPlay(manage.play, (manage.play.game = false));
