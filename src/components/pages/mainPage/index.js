@@ -9,28 +9,24 @@ export default function MainPage() {
     window.location.replace(game);
   }
 
+  const game = ["/singleGame", "/localGame"];
+  const gameText = ["혼자 하기", "친구와 함께하기"];
+
   return (
     <B.MainDiv>
       <B.Side>
         <R.Button>
-          <Link
-            to="/singleGame"
-            style={{ textDecoration: "none" }}
-            onClick={() => reload("/singleGame")}
-          >
-            <div className="button">
-              <div>혼자 하기</div>
-            </div>
-          </Link>
-          <Link
-            to="/localGame"
-            style={{ textDecoration: "none" }}
-            onClick={() => reload("/localGame")}
-          >
-            <div className="button">
-              <div>친구와 하기</div>
-            </div>
-          </Link>
+          {game.map((item, i) => (
+            <Link
+              to={item}
+              style={{ textDecoration: "none" }}
+              onClick={() => reload(item)}
+            >
+              <div className="button">
+                <div>{gameText[i]}</div>
+              </div>
+            </Link>
+          ))}
         </R.Button>
       </B.Side>
       <B.GameBoard>
