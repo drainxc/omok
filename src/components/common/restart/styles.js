@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const Button = styled.div`
   .button {
     background: url("http://1.bp.blogspot.com/-tXavBQFjNFQ/VMSaYaq7PtI/AAAAAAAADSc/awMPRe3yu5A/s1600/wood_pattern.png");
-    width: 300px;
-    height: 75px;
+    width: 350px;
+    height: 90px;
     position: relative;
     border: none;
     display: inline-block;
@@ -21,7 +21,7 @@ export const Button = styled.div`
     justify-content: center;
   }
   .button > div {
-    padding: 10px 20px 12px 20px;
+    padding: 20px 20px 12px 20px;
     color: rgba(0, 0, 0, 0.7);
     font-weight: bold;
     font-size: 40px;
